@@ -1,25 +1,14 @@
 const mongoose = require('mongoose')
+const colors = require('colors')
+const connectDb = async () => {
+    try{
+        await mongoose.connect(process.env.MONGO_URL)
+        console.log(`Server Running on ${mongoose.connection.host}`.bgCyan.white);
 
-//schema design
-const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Name is required']
-    },
-    email: {
-        type: String,
-        required: [true, 'Email is required'],
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: [true, 'Password is required']
-    },
-},
-    { timestamps: true }
-);
+    }catch(error)
+    {
+        console.log(`${error}`.bgRed);
+    }
+}
 
-//export
-const userModel = mongoose.model('users', userSchema)
-
-module.exports = userModel
+module.exports =connectDb
