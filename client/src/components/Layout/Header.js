@@ -1,7 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useState,useEffect} from "react";
+import { Link,useNavigate } from "react-router-dom";
+import { message } from "antd";
+
 
 const Header = () => {
+  const [loginUser,setLoginUser]=useState('');
+  const navigate = useNavigate();
+  useEffect(()=>
+  {
+    const user = JSON.parse(localStorage.getItem('user'))
+    if(user)
+    {
+      setLoginUser(user)
+    }
+  },[])
+ 
+  //redirect from logout button
+
+  const logoutHandler = () => {
+     localStorage.removeItem('user')
+     message.success("Bahar nikal bhosdike")
+     navigate('/login')
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -23,13 +44,22 @@ const Header = () => {
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link
+                <p
                   to="/user"
                   className="nav-link active"
                   aria-current="page"
                 >
-                  User
-                </Link>
+                  {loginUser && loginUser.name}
+                </p>
+              </li>
+              <li className="nav-item">
+                <button
+                 
+                  className="btn btn-danger"
+                  onClick={logoutHandler}
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
