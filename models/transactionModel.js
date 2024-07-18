@@ -3,10 +3,15 @@ const mongoose = require('mongoose')
 
 const transectionSchema = new mongoose.Schema({
     amount: {
-        type: String,
+        type: Number,
         required: [true, 'amount is required']
-    }, category: {
+    },
+     category: {
         type: String,
+        required:[true,'cat is required']
+    },
+    refrence:{
+        type:String,
     },
     description: {
         type: String,
