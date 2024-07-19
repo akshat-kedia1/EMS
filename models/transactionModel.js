@@ -4,22 +4,26 @@ const mongoose = require('mongoose')
 const transectionSchema = new mongoose.Schema({
     amount: {
         type: Number,
-        required: [true, 'amount is required']
+        required: [true, 'Amount to batado bhai']
     },
      category: {
         type: String,
-        required:[true,'cat is required']
+        required:[true,'Category to batado bhai']
     },
-    refrence:{
+    type:{
+        type:String,
+        required:[true,"Type to batado bhai"]
+    },
+    reference:{
         type:String,
     },
     description: {
         type: String,
-        required: [true, 'desc is required']
+        required: [true, 'Description to dedo bhai']
     },
     date: {
         type: String,
-        required: [true, 'data is required']
+        required: [true, 'Data doge ki nhi?']
     }
 }, { timestamps: true })
 

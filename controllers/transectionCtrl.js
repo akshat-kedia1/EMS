@@ -1,10 +1,10 @@
-const transectionModel = require("../models/transactionModel");
+const transactionModel = require("../models/transactionModel");
 
 
 
 const getAllTransection = async (req, res) => {
     try {
-        const transections = await transectionModel.find({});
+        const transections = await transactionModel.find({});
         res.status(200).json(transections);
     }
     catch (err) {
@@ -16,7 +16,7 @@ const getAllTransection = async (req, res) => {
 
 const addTransection = async (req, res) => {
     try {
-        const newTransection = new transectionModel(req.body);
+        const newTransection = new transactionModel(req.body);
         await newTransection.save()
         res.status(201).send("Transaction Created")
     }
