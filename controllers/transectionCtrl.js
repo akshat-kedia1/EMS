@@ -4,7 +4,7 @@ const transactionModel = require("../models/transactionModel");
 
 const getAllTransection = async (req, res) => {
     try {
-        const transections = await transactionModel.find({});
+        const transections = await transactionModel.find({userid: req.body.userid});
         res.status(200).json(transections);
     }
     catch (err) {

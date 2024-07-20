@@ -10,7 +10,7 @@ router.post("/add-transection",addTransection)
 
 
 // get transactions
-router.get("/add-transection",getAllTransection)
+router.post("/get-transection",getAllTransection)
 
 
 module.exports= router;
